@@ -1,21 +1,22 @@
 pipeline{
     agent any
     stages{
-
          stage("Powershell"){
             environment{
                APP_TO_TEST = "NUnitTest"
                TEST_CATEGORY = "regression"
             }
-
             steps{
-               echo "======== Starting Test========"
+               echo "======== Starting Powershell ========"
 			      powershell "JenkinsPosition\\PS\\automatedTests.ps1 -appToTest ${APP_TO_TEST} -testCategory ${TEST_CATEGORY}, -environmentURL http://COC.Web.Automated"
             }
-               failure{
-                  echo "========Powershell testing failed========"
-                  error("Failed PowerShell Test")
-               }
-            }
-        }
+      }
+      always{
+         echo "Completed Powershell Stage"
+      }
+      failure{
+         echo "========Powershell testing failed========"
+         error("Failed PowerShell Test")
+      }
+   }
 }
