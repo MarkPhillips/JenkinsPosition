@@ -43,7 +43,9 @@
     <Compile Include="TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Jenkinsfile" />
     <None Include="packages.config" />
+    <None Include="PS\automatedTests.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
